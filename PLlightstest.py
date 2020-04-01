@@ -11,15 +11,19 @@ class WhiteorRed:
 
         self.color = StringVar()
 
-        radio_red = Radiobutton(frame, text="Red", bg="red", variable=self.color, value="R", command = self.changecolors)
+        radio_red = Radiobutton(frame, text="Red", bg="white", variable=self.color, value="R", command = self.changecolors)
         radio_red.grid(row=10, column=1)
 
         radio_white = Radiobutton(frame, text="White", bg="White", variable=self.color, value="W", command = self.changecolors)               
         radio_white.grid(row = 10, column = 2)
 
-        radio_twored = Radiobutton(frame, text = "TwoReds", bg = "red", variable = self.color, value = "RRW",
+        radio_twored = Radiobutton(frame, text = "TwoReds", bg = "white", variable = self.color, value = "RRW",
         command = self.changecolors)
-        radio_twored.grid(row = 10, column = 2)
+        radio_twored.grid(row = 10, column = 3)
+
+        radio_twowhite = Radiobutton(frame, text = "TwoWhite", bg = "white", variable = self.color, value = "WWR",
+        command = self.changecolors)
+        radio_twowhite.grid(row = 10, column = 4)
 
         self.canvas = Canvas(window, width = 450, height = 300, bg = "white")
         self.canvas.pack()
@@ -31,7 +35,7 @@ class WhiteorRed:
         self.oval_three = self.canvas.create_oval(230, 10, 330, 110, fill ="white")
 
         self.color.set('R')
-        self.canvas.itemconfig(self.oval_one, fill ="red")
+        self.canvas.itemconfig(self.oval_one, fill ="white")
 
         window.mainloop()
 
@@ -52,6 +56,11 @@ class WhiteorRed:
             self.canvas.itemconfig(self.oval_one, fill = "red")
             self.canvas.itemconfig(self.oval_two, fill = "red")
             self.canvas.itemconfig(self.oval_three, fill = "white")
+
+        elif color == 'WWR':
+            self.canvas.itemconfig(self.oval_one, fill = "white")
+            self.canvas.itemconfig(self.oval_two, fill = "white")
+            self.canvas.itemconfig(self.oval_three, fill = "red") 
 
 
 WhiteorRed()
